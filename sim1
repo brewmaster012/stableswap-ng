@@ -1,0 +1,996 @@
+% python3 test_dxdy.py
+fee_receiver 0xd13f0Bd22AFF8176761AEFBfC052a7490bDe268E
+admin 0x00dE89C733555886f785b0C32b498300297e481F
+fee rate 0
+A 1000
+deployer: initial deposit liquidity: 100 coin0/coin1/coin2/coin3
+  deployer LP token 400000000000000000000
+  before xchg pool [100.0, 100.0, 100.0, 100.0]
+alice exchanged dx=98.0 coin0 for dy=96.610121 coin2
+  at relative loss of (dx-dy)/dx=1.42%
+  causing severe pool imbalance
+  after xchg pool balance [198.0, 100.0, 3.389879, 100.0]
+  LP token virtual price 1.0034746975
+alice deposit (abundant) 20.0 coin1, got LP token 19911930083712053118
+  LP nominal loss 0.44%
+  LP token virtual price 1.0035196640304869
+alice deposit (scarce) 20.0 coin2, got LP token 21294460703673408089
+  LP nominal gain 6.47%
+  LP token virtual price 1.0004158784107526
+alice rebalanced the pool by exchanging dy=96.61 coin2 for dx=96.79 coin0
+  at relative profit 0.19%
+  after re-balance the pool: [101.20812, 120.0, 120.0, 100.0]
+  LP token virtual price 1.0000039192827905
+alice deposit 20.0 coin1, got LP token 19997178220136218290
+  LP nominal loss 0.01%
+  LP token virtual price 1.00000986764367
+  pool balances [101.20812, 140.0, 120.0, 100.0]
+tx progress 0/1000
+  pool balance: [101.20812, 140.0, 120.0, 100.0]
+  max_bal/min_bal: 1.400000e+00
+  virtual price 1.00000986764367
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 100/1000
+  pool balance: [2242.775296, 5010.279062, 4109.983356, 6017.835322]
+  max_bal/min_bal: 2.683209e+00
+  virtual price 1.0000705838459956
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 200/1000
+  pool balance: [935.683469, 8710.7026, 21501.967689, 2282.332658]
+  max_bal/min_bal: 2.297996e+01
+  virtual price 1.00276608911142
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 300/1000
+  pool balance: [4371.047176, 4892.880316, 11784.911797, 19103.31818]
+  max_bal/min_bal: 4.370421e+00
+  virtual price 1.0002765929367146
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 400/1000
+  pool balance: [2630.710095, 519.793093, 34883.159655, 15566.24895]
+  max_bal/min_bal: 6.710970e+01
+  virtual price 1.0101747887240808
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 500/1000
+  pool balance: [1126.679978, 17090.489755, 35712.796576, 6454.206347]
+  max_bal/min_bal: 3.169737e+01
+  virtual price 1.0026445686905447
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 600/1000
+  pool balance: [8738.903981, 3372.035901, 48865.730932, 6661.397987]
+  max_bal/min_bal: 1.449146e+01
+  virtual price 1.0018650019072919
+^C[11] > /Users/pwu/Library/Caches/pypoetry/virtualenvs/stableswap-ng-P-0SZnmD-py3.11/lib/python3.11/site-packages/eth/_utils/numeric.py(33)ceil32()
+-> def ceil32(x: int) -> int:
+(Pdb++) ^D
+^C
+(stableswap-ng-py3.11) pwu@Panruos-MacBook-Pro-2 stableswap-ng % python3 test_dxdy.py
+fee_receiver 0xd13f0Bd22AFF8176761AEFBfC052a7490bDe268E
+admin 0x00dE89C733555886f785b0C32b498300297e481F
+fee rate 0
+A 1000
+deployer: initial deposit liquidity: 100 coin0/coin1/coin2/coin3
+  deployer LP token 400000000000000000000
+  before xchg pool [100.0, 100.0, 100.0, 100.0]
+alice exchanged dx=98.0 coin0 for dy=96.610121 coin2
+  at relative loss of (dx-dy)/dx=1.42%
+  causing severe pool imbalance
+  after xchg pool balance [198.0, 100.0, 3.389879, 100.0]
+  LP token virtual price 1.0034746975
+alice deposit (abundant) 20.0 coin1, got LP token 19911930083712053118
+  LP nominal loss 0.44%
+  LP token virtual price 1.0035196640304869
+alice deposit (scarce) 20.0 coin2, got LP token 21294460703673408089
+  LP nominal gain 6.47%
+  LP token virtual price 1.0004158784107526
+alice rebalanced the pool by exchanging dy=96.61 coin2 for dx=96.79 coin0
+  at relative profit 0.19%
+  after re-balance the pool: [101.20812, 120.0, 120.0, 100.0]
+  LP token virtual price 1.0000039192827905
+alice deposit 20.0 coin1, got LP token 19997178220136218290
+  LP nominal loss 0.01%
+  LP token virtual price 1.00000986764367
+  pool balances [101.20812, 140.0, 120.0, 100.0]
+tx progress 0/1000
+  pool balance: [101.20812, 140.0, 120.0, 100.0]
+  max_bal/min_bal: 1.400000e+00
+  virtual price 1.00000986764367
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+add_liquidity loss exceeded
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 100/1000
+  pool balance: [3262.221906, 5520.911018, 8731.727923, 1231.912891]
+  max_bal/min_bal: 7.087943e+00
+  virtual price 1.000371670141551
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 200/1000
+  pool balance: [15174.931033, 526.334427, 3211.655245, 17357.308202]
+  max_bal/min_bal: 3.297772e+01
+  virtual price 1.0034932119355424
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 300/1000
+  pool balance: [586.111795, 8804.14768, 1825.285582, 37231.552472]
+  max_bal/min_bal: 6.352295e+01
+  virtual price 1.014247268558009
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 400/1000
+  pool balance: [17041.328158, 669.218812, 6122.167222, 36589.754065]
+  max_bal/min_bal: 5.467532e+01
+  virtual price 1.0047495058444265
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 500/1000
+  pool balance: [8481.055972, 331.955416, 41721.927094, 25164.786285]
+  max_bal/min_bal: 1.256853e+02
+  virtual price 1.010168725937538
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 600/1000
+  pool balance: [1653.550695, 42326.655162, 34163.975775, 2048.004424]
+  max_bal/min_bal: 2.559743e+01
+  virtual price 1.0077463719021713
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 700/1000
+  pool balance: [31702.828974, 4417.283909, 52123.381375, 241.425879]
+  max_bal/min_bal: 2.158981e+02
+  virtual price 1.029939794091708
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 800/1000
+  pool balance: [24920.290694, 8932.24357, 50304.586678, 16110.687047]
+  max_bal/min_bal: 5.631797e+00
+  virtual price 1.000296516350063
+tx progress 900/1000
+  pool balance: [33373.537165, 10268.107097, 9751.794504, 50849.862324]
+  max_bal/min_bal: 5.214411e+00
+  virtual price 1.0004274690595716
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+after 1000 txs
+  final pool balance [29116.722531, 39186.732592, 7847.084202, 26270.166949]
+  finla pool virtual price 1.000206508875161
+[10070010061, 0, 31339648390, 12916565643]
+after balancing pool:
+   pool balance [39186.732592, 39186.732592, 39186.732592, 39186.732592]
+   pool virtual price 1.0000000099749151
+(stableswap-ng-py3.11) pwu@Panruos-MacBook-Pro-2 stableswap-ng % python3 test_dxdy.py
+fee_receiver 0xd13f0Bd22AFF8176761AEFBfC052a7490bDe268E
+admin 0x00dE89C733555886f785b0C32b498300297e481F
+fee rate 0
+A 1000
+deployer: initial deposit liquidity: 100 coin0/coin1/coin2/coin3
+  deployer LP token 400000000000000000000
+  before xchg pool [100.0, 100.0, 100.0, 100.0]
+alice exchanged dx=98.0 coin0 for dy=96.610121 coin2
+  at relative loss of (dx-dy)/dx=1.42%
+  causing severe pool imbalance
+  after xchg pool balance [198.0, 100.0, 3.389879, 100.0]
+  LP token virtual price 1.0034746975
+alice deposit (abundant) 20.0 coin1, got LP token 19911930083712053118
+  LP nominal loss 0.44%
+  LP token virtual price 1.0035196640304869
+alice deposit (scarce) 20.0 coin2, got LP token 21294460703673408089
+  LP nominal gain 6.47%
+  LP token virtual price 1.0004158784107526
+alice rebalanced the pool by exchanging dy=96.61 coin2 for dx=96.79 coin0
+  at relative profit 0.19%
+  after re-balance the pool: [101.20812, 120.0, 120.0, 100.0]
+  LP token virtual price 1.0000039192827905
+alice deposit 20.0 coin1, got LP token 19997178220136218290
+  LP nominal loss 0.01%
+  LP token virtual price 1.00000986764367
+  pool balances [101.20812, 140.0, 120.0, 100.0]
+tx progress 0/10000
+  pool balance: [101.20812, 140.0, 120.0, 100.0]
+  max_bal/min_bal: 1.400000e+00
+  virtual price 1.00000986764367
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+add_liquidity loss exceeded
+add_liquidity loss exceeded
+add_liquidity loss exceeded
+add_liquidity loss exceeded
+add_liquidity loss exceeded
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 100/10000
+  pool balance: [376.121289, 4005.438218, 6463.736552, 2034.087442]
+  max_bal/min_bal: 1.718525e+01
+  virtual price 1.0011007654662234
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 200/10000
+  pool balance: [7976.531987, 2949.724242, 5679.357586, 8895.009411]
+  max_bal/min_bal: 3.015539e+00
+  virtual price 1.0000974216363292
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 300/10000
+  pool balance: [14216.601569, 18280.820341, 7339.473516, 4074.634524]
+  max_bal/min_bal: 4.486493e+00
+  virtual price 1.0002168909065443
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 400/10000
+  pool balance: [4120.986033, 28498.898621, 928.427992, 17417.248985]
+  max_bal/min_bal: 3.069586e+01
+  virtual price 1.0031757787569888
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 500/10000
+  pool balance: [13697.955201, 18926.290136, 9752.67228, 19442.419062]
+  max_bal/min_bal: 1.993548e+00
+  virtual price 1.0000402235249004
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 600/10000
+  pool balance: [3855.183487, 23219.81739, 37414.7273, 13077.231251]
+  max_bal/min_bal: 9.705045e+00
+  virtual price 1.0005554761820734
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 700/10000
+  pool balance: [3461.211195, 42822.552314, 26715.089238, 14896.199848]
+  max_bal/min_bal: 1.237213e+01
+  virtual price 1.000735388468176
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 800/10000
+  pool balance: [3640.832205, 45997.207162, 16042.434802, 32129.09297]
+  max_bal/min_bal: 1.263371e+01
+  virtual price 1.0007823403662977
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 900/10000
+  pool balance: [160.792575, 45826.525263, 21666.586433, 37704.104445]
+  max_bal/min_bal: 2.850040e+02
+  virtual price 1.0183384466594443
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 1000/10000
+  pool balance: [10861.059591, 1256.06468, 16350.266214, 82810.418316]
+  max_bal/min_bal: 6.592847e+01
+  virtual price 1.0076144878088875
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 1100/10000
+  pool balance: [33627.93204, 4784.274189, 9931.209792, 76504.913137]
+  max_bal/min_bal: 1.599091e+01
+  virtual price 1.0016781519973923
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 1200/10000
+  pool balance: [26278.770021, 3552.336913, 22778.6662, 80555.045932]
+  max_bal/min_bal: 2.267663e+01
+  virtual price 1.0015319354938526
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 1300/10000
+  pool balance: [34380.509618, 39513.575276, 27317.651538, 35516.870267]
+  max_bal/min_bal: 1.446448e+00
+  virtual price 1.0000090677112614
+tx progress 1400/10000
+  pool balance: [25861.203177, 42621.955632, 29497.23604, 41890.897634]
+  max_bal/min_bal: 1.648104e+00
+  virtual price 1.0000245392087728
+tx progress 1500/10000
+  pool balance: [62271.491351, 47205.887522, 571.564326, 40987.162798]
+  max_bal/min_bal: 1.089492e+02
+  virtual price 1.0069285814230997
+swap loss exceeded 0.2
+tx progress 1600/10000
+  pool balance: [55565.247133, 67569.40687, 3625.52716, 30289.128113]
+  max_bal/min_bal: 1.863713e+01
+  virtual price 1.0011842290708834
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 1700/10000
+  pool balance: [52084.04695, 52468.320453, 51201.949369, 3410.577986]
+  max_bal/min_bal: 1.538400e+01
+  virtual price 1.0010579215766553
+swap loss exceeded 0.2
+tx progress 1800/10000
+  pool balance: [33108.245948, 44388.186522, 55538.968507, 26366.387845]
+  max_bal/min_bal: 2.106431e+00
+  virtual price 1.0000430551303716
+tx progress 1900/10000
+  pool balance: [5343.629227, 42983.215424, 63117.333964, 52399.777531]
+  max_bal/min_bal: 1.181170e+01
+  virtual price 1.0006740652420543
+tx progress 2000/10000
+  pool balance: [7001.48309, 25411.478996, 79903.063425, 58196.993698]
+  max_bal/min_bal: 1.141231e+01
+  virtual price 1.000744976550703
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 2100/10000
+  pool balance: [7234.320786, 8113.532663, 98355.197167, 62629.865555]
+  max_bal/min_bal: 1.359564e+01
+  virtual price 1.0023371118510733
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 2200/10000
+  pool balance: [30503.959127, 24026.365605, 78112.03736, 48207.898578]
+  max_bal/min_bal: 3.251097e+00
+  virtual price 1.0001284698968458
+swap loss exceeded 0.2
+tx progress 2300/10000
+  pool balance: [32175.171057, 11520.701005, 104795.669288, 34700.193099]
+  max_bal/min_bal: 9.096293e+00
+  virtual price 1.000564221465154
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 2400/10000
+  pool balance: [34826.14284, 8975.315241, 58717.599975, 83846.084012]
+  max_bal/min_bal: 9.341854e+00
+  virtual price 1.0005140795896283
+swap loss exceeded 0.2
+tx progress 2500/10000
+  pool balance: [31937.128351, 28668.152551, 66979.203546, 65709.157627]
+  max_bal/min_bal: 2.336363e+00
+  virtual price 1.0000883243706218
+tx progress 2600/10000
+  pool balance: [32928.673112, 42282.013635, 55041.460957, 68187.780532]
+  max_bal/min_bal: 2.070772e+00
+  virtual price 1.0000398867343048
+tx progress 2700/10000
+  pool balance: [45854.74005, 74779.143855, 16870.043026, 60867.728286]
+  max_bal/min_bal: 4.432659e+00
+  virtual price 1.0001793184465488
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 2800/10000
+  pool balance: [53711.470409, 93722.820585, 18177.752259, 25770.828762]
+  max_bal/min_bal: 5.155908e+00
+  virtual price 1.0003050223226737
+tx progress 2900/10000
+  pool balance: [43066.12003, 86848.718488, 37163.537939, 28600.264464]
+  max_bal/min_bal: 3.036640e+00
+  virtual price 1.0001101339301417
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 3000/10000
+  pool balance: [62720.038606, 69784.113968, 46799.874236, 21879.126552]
+  max_bal/min_bal: 3.189529e+00
+  virtual price 1.000106954382581
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 3100/10000
+  pool balance: [62766.628688, 65039.400335, 66286.202299, 13141.792232]
+  max_bal/min_bal: 5.043924e+00
+  virtual price 1.000256099812291
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 3200/10000
+  pool balance: [61322.243153, 77094.066996, 32021.176699, 30142.769616]
+  max_bal/min_bal: 2.557631e+00
+  virtual price 1.0000964184314258
+tx progress 3300/10000
+  pool balance: [13092.508752, 39529.581171, 45977.466073, 98646.055518]
+  max_bal/min_bal: 7.534542e+00
+  virtual price 1.0003789240254206
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 3400/10000
+  pool balance: [16346.612223, 7045.202435, 49929.014965, 123278.744349]
+  max_bal/min_bal: 1.749825e+01
+  virtual price 1.0017935486767537
+swap loss exceeded 0.2
+tx progress 3500/10000
+  pool balance: [29527.020675, 14488.612239, 55391.53672, 100375.894519]
+  max_bal/min_bal: 6.927916e+00
+  virtual price 1.000403143545788
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 3600/10000
+  pool balance: [44944.742941, 8261.508107, 63140.099339, 91642.808329]
+  max_bal/min_bal: 1.109275e+01
+  virtual price 1.0005986980798711
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 3700/10000
+  pool balance: [56319.608256, 24284.615384, 81187.867344, 52362.016029]
+  max_bal/min_bal: 3.343181e+00
+  virtual price 1.0001032650770108
+tx progress 3800/10000
+  pool balance: [62631.752685, 24101.856649, 66985.214294, 67706.13564]
+  max_bal/min_bal: 2.809167e+00
+  virtual price 1.0000929028446228
+tx progress 3900/10000
+  pool balance: [37774.359033, 26775.346953, 79830.94276, 81546.436406]
+  max_bal/min_bal: 3.045579e+00
+  virtual price 1.0001363547499198
+tx progress 4000/10000
+  pool balance: [34794.258345, 7823.076895, 103031.188196, 86661.993244]
+  max_bal/min_bal: 1.317016e+01
+  virtual price 1.000916151223544
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 4100/10000
+  pool balance: [57115.559767, 6446.701823, 127424.127068, 49371.990085]
+  max_bal/min_bal: 1.976579e+01
+  virtual price 1.0011507442581296
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 4200/10000
+  pool balance: [63824.454387, 18427.439131, 125787.703928, 36766.831273]
+  max_bal/min_bal: 6.826109e+00
+  virtual price 1.00039395565615
+swap loss exceeded 0.2
+tx progress 4300/10000
+  pool balance: [88324.254822, 11923.793713, 115891.657986, 28683.249866]
+  max_bal/min_bal: 9.719361e+00
+  virtual price 1.000749295853675
+tx progress 4400/10000
+  pool balance: [97667.309378, 12070.386932, 93541.471817, 56107.20212]
+  max_bal/min_bal: 8.091481e+00
+  virtual price 1.0004633079399656
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 4500/10000
+  pool balance: [95954.134172, 9501.721544, 93977.544146, 58825.286931]
+  max_bal/min_bal: 1.009861e+01
+  virtual price 1.0006099596455311
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 4600/10000
+  pool balance: [115972.747904, 13164.29891, 71988.998857, 61652.512919]
+  max_bal/min_bal: 8.809641e+00
+  virtual price 1.0004361538484636
+tx progress 4700/10000
+  pool balance: [104082.12271, 59966.863431, 69740.682807, 37631.63792]
+  max_bal/min_bal: 2.765814e+00
+  virtual price 1.0000736022568182
+tx progress 4800/10000
+  pool balance: [116074.458087, 55837.242081, 55779.411525, 46266.387587]
+  max_bal/min_bal: 2.508829e+00
+  virtual price 1.0000789145386957
+tx progress 4900/10000
+  pool balance: [64973.869964, 33166.738742, 114596.891276, 60800.796086]
+  max_bal/min_bal: 3.455175e+00
+  virtual price 1.0001140997256839
+tx progress 5000/10000
+  pool balance: [84908.325931, 42537.659697, 96340.153908, 56132.564189]
+  max_bal/min_bal: 2.264820e+00
+  virtual price 1.0000570320722242
+tx progress 5100/10000
+  pool balance: [105634.359651, 58538.111028, 76031.004555, 43171.453315]
+  max_bal/min_bal: 2.446857e+00
+  virtual price 1.0000603193751807
+tx progress 5200/10000
+  pool balance: [138173.882225, 3211.603254, 103769.996058, 44712.784148]
+  max_bal/min_bal: 4.302333e+01
+  virtual price 1.0030580049974644
+tx progress 5300/10000
+  pool balance: [159392.926738, 32414.174144, 63320.598029, 40641.334218]
+  max_bal/min_bal: 4.917384e+00
+  virtual price 1.0003115174000254
+swap loss exceeded 0.2
+tx progress 5400/10000
+  pool balance: [125046.880794, 35105.875228, 127732.57536, 11791.201153]
+  max_bal/min_bal: 1.083287e+01
+  virtual price 1.0009369274832427
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 5500/10000
+  pool balance: [153337.16053, 27264.533067, 126029.017084, 4382.499361]
+  max_bal/min_bal: 3.498852e+01
+  virtual price 1.0036499992556107
+tx progress 5600/10000
+  pool balance: [119037.457337, 54876.485916, 112566.46866, 24582.562268]
+  max_bal/min_bal: 4.842354e+00
+  virtual price 1.0002554363022735
+tx progress 5700/10000
+  pool balance: [121007.229545, 77099.175463, 100274.950409, 18773.074914]
+  max_bal/min_bal: 6.445786e+00
+  virtual price 1.0003120344281713
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 5800/10000
+  pool balance: [137955.279249, 72139.181978, 93024.050506, 15903.78647]
+  max_bal/min_bal: 8.674367e+00
+  virtual price 1.0004359815695574
+swap loss exceeded 0.2
+tx progress 5900/10000
+  pool balance: [145938.106056, 57514.491718, 89619.961771, 29846.292704]
+  max_bal/min_bal: 4.889656e+00
+  virtual price 1.0002226910552088
+tx progress 6000/10000
+  pool balance: [195049.190293, 68989.74936, 29853.567808, 25782.488007]
+  max_bal/min_bal: 7.565181e+00
+  virtual price 1.000731923190095
+tx progress 6100/10000
+  pool balance: [210614.088941, 23056.114966, 38241.363072, 45629.248843]
+  max_bal/min_bal: 9.134847e+00
+  virtual price 1.0009176380791744
+tx progress 6200/10000
+  pool balance: [184921.646944, 55210.452784, 13861.256479, 54614.786876]
+  max_bal/min_bal: 1.334090e+01
+  virtual price 1.000892124364167
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 6300/10000
+  pool balance: [160839.38406, 60588.877657, 12835.172262, 80824.437869]
+  max_bal/min_bal: 1.253114e+01
+  virtual price 1.0006996160986674
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 6400/10000
+  pool balance: [195521.79592, 39158.749083, 10827.502922, 74505.785657]
+  max_bal/min_bal: 1.805788e+01
+  virtual price 1.0013990814744802
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 6500/10000
+  pool balance: [203105.573148, 32112.390783, 5953.195977, 81612.482691]
+  max_bal/min_bal: 3.411706e+01
+  virtual price 1.003054951926865
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 6600/10000
+  pool balance: [181410.980136, 40871.752957, 5550.622922, 101562.462525]
+  max_bal/min_bal: 3.268299e+01
+  virtual price 1.0024735920290746
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 6700/10000
+  pool balance: [205941.886622, 13853.952212, 5286.312885, 106389.521396]
+  max_bal/min_bal: 3.895757e+01
+  virtual price 1.0068979716218838
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 6800/10000
+  pool balance: [191082.380415, 56527.880857, 3903.880393, 90393.416994]
+  max_bal/min_bal: 4.894678e+01
+  virtual price 1.0032068036750388
+swap loss exceeded 0.2
+tx progress 6900/10000
+  pool balance: [146690.653516, 37114.1126, 16022.187534, 137344.611306]
+  max_bal/min_bal: 9.155470e+00
+  virtual price 1.0008002654547792
+swap loss exceeded 0.2
+tx progress 7000/10000
+  pool balance: [140308.616088, 12560.899073, 31033.676886, 156422.556972]
+  max_bal/min_bal: 1.245313e+01
+  virtual price 1.0012736034000942
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 7100/10000
+  pool balance: [148827.953771, 37402.973994, 5418.920757, 149404.693301]
+  max_bal/min_bal: 2.757093e+01
+  virtual price 1.0026510179733288
+swap loss exceeded 0.2
+tx progress 7200/10000
+  pool balance: [135556.612075, 37804.579172, 52747.363156, 112290.712273]
+  max_bal/min_bal: 3.585719e+00
+  virtual price 1.0001717534547323
+tx progress 7300/10000
+  pool balance: [129080.964006, 18957.99148, 79657.141993, 105840.476915]
+  max_bal/min_bal: 6.808789e+00
+  virtual price 1.0003351514651198
+swap loss exceeded 0.2
+tx progress 7400/10000
+  pool balance: [114394.212822, 37432.919374, 77961.862789, 110118.123292]
+  max_bal/min_bal: 3.055979e+00
+  virtual price 1.0001045994260516
+tx progress 7500/10000
+  pool balance: [101802.824523, 77601.872316, 75908.596025, 87631.774593]
+  max_bal/min_bal: 1.341124e+00
+  virtual price 1.0000071851342585
+tx progress 7600/10000
+  pool balance: [62803.316989, 97068.580628, 96132.961161, 89443.462728]
+  max_bal/min_bal: 1.545596e+00
+  virtual price 1.0000154364725542
+tx progress 7700/10000
+  pool balance: [69629.899775, 61880.095924, 90939.405849, 132052.736558]
+  max_bal/min_bal: 2.134010e+00
+  virtual price 1.0000481651475968
+tx progress 7800/10000
+  pool balance: [40474.002606, 111114.894211, 116720.503052, 86781.646458]
+  max_bal/min_bal: 2.883839e+00
+  virtual price 1.0000908495186023
+tx progress 7900/10000
+  pool balance: [58880.143351, 89545.234066, 113340.944406, 92956.97213]
+  max_bal/min_bal: 1.924943e+00
+  virtual price 1.000028455544791
+tx progress 8000/10000
+  pool balance: [25995.191476, 80049.486513, 123103.727886, 122327.81404]
+  max_bal/min_bal: 4.735635e+00
+  virtual price 1.0002253105041508
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 8100/10000
+  pool balance: [2589.569766, 81862.321793, 141351.230978, 142316.228502]
+  max_bal/min_bal: 5.495748e+01
+  virtual price 1.0038905592560368
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 8200/10000
+  pool balance: [51096.983762, 87005.527711, 138437.045408, 91893.584573]
+  max_bal/min_bal: 2.709300e+00
+  virtual price 1.000068225735659
+tx progress 8300/10000
+  pool balance: [32163.019783, 96531.789073, 151529.19385, 88700.606586]
+  max_bal/min_bal: 4.711286e+00
+  virtual price 1.000183339264481
+tx progress 8400/10000
+  pool balance: [39188.895447, 81573.101765, 159242.254889, 90755.650365]
+  max_bal/min_bal: 4.063454e+00
+  virtual price 1.000149326599156
+tx progress 8500/10000
+  pool balance: [36916.099702, 89663.189561, 140233.905223, 110016.211386]
+  max_bal/min_bal: 3.798719e+00
+  virtual price 1.0001355390168045
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 8600/10000
+  pool balance: [5892.083277, 97466.008821, 120196.085272, 152901.724279]
+  max_bal/min_bal: 2.595037e+01
+  virtual price 1.001596693225037
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+swap loss exceeded 0.2
+tx progress 8700/10000
+  pool balance: [19445.668691, 97652.48541, 133350.444067, 129510.799215]
+  max_bal/min_bal: 6.857591e+00
+  virtual price 1.000369872224063
+tx progress 8800/10000
+  pool balance: [21027.00358, 124091.086713, 122420.136397, 116303.403458]
+  max_bal/min_bal: 5.901511e+00
+  virtual price 1.000320033837431
+tx progress 8900/10000
+  pool balance: [31280.588634, 148557.697371, 156625.36356, 55455.01726]
+  max_bal/min_bal: 5.007110e+00
+  virtual price 1.0003202509389704
+tx progress 9000/10000
+  pool balance: [21546.838945, 177980.661358, 106040.061245, 91726.599488]
+  max_bal/min_bal: 8.260175e+00
+  virtual price 1.00040136986781
+tx progress 9100/10000
+  pool balance: [51260.172733, 164783.943371, 77874.151038, 108966.268089]
+  max_bal/min_bal: 3.214658e+00
+  virtual price 1.0001089466313506
+tx progress 9200/10000
+  pool balance: [17018.676965, 146426.224748, 110904.677517, 126664.481926]
+  max_bal/min_bal: 8.603855e+00
+  virtual price 1.0004702128532468
+tx progress 9300/10000
+  pool balance: [55589.1254, 142899.455124, 69792.61048, 142635.749371]
+  max_bal/min_bal: 2.570637e+00
+  virtual price 1.0001020961918774
+tx progress 9400/10000
+  pool balance: [60194.469901, 129659.326735, 80405.302327, 140525.232386]
+  max_bal/min_bal: 2.334521e+00
+  virtual price 1.0000653874392837
+tx progress 9500/10000
+  pool balance: [76680.706754, 130903.130341, 73771.568781, 124556.596581]
+  max_bal/min_bal: 1.774439e+00
+  virtual price 1.0000375358473106
+tx progress 9600/10000
+  pool balance: [61928.645501, 156512.898282, 98740.232994, 83860.349539]
+  max_bal/min_bal: 2.527310e+00
+  virtual price 1.0000648163994221
+tx progress 9700/10000
+  pool balance: [97983.254602, 152438.13659, 107008.318595, 41482.068372]
+  max_bal/min_bal: 3.674796e+00
+  virtual price 1.000122942204084
+tx progress 9800/10000
+  pool balance: [109794.931876, 139845.071278, 125975.533652, 27868.77096]
+  max_bal/min_bal: 5.017985e+00
+  virtual price 1.000229851636923
+tx progress 9900/10000
+  pool balance: [92949.84561, 153317.797586, 146331.830595, 14351.472664]
+  max_bal/min_bal: 1.068307e+01
+  virtual price 1.0006427856476194
+swap loss exceeded 0.2
+after 10000 txs
+  final pool balance [115148.521438, 137280.070576, 142743.57161, 13521.077399]
+  finla pool virtual price 1.0006408715499044
+[27595050172, 5463501034, 0, 129222494211]
+after balancing pool:
+   pool balance [142743.57161, 142743.57161, 142743.57161, 142743.57161]
+   pool virtual price 1.0000001468467572

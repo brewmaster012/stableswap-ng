@@ -1,4 +1,11 @@
 import boa
+import sys
+import pdb
+
+def info(type, value, tb):
+    pdb.post_mortem(tb)
+
+sys.excepthook = info
 
 def print_balances(pool):
     return [b/10**6 for b in pool.get_balances()]
@@ -20,7 +27,7 @@ coin1._mint_for_testing(wallet, INITIAL_AMOUNT*10**6)
 coin2._mint_for_testing(wallet, INITIAL_AMOUNT*10**6)
 coin3._mint_for_testing(wallet, INITIAL_AMOUNT*10**6)
 
-A = 400
+A = 1000
 fee = 0
 # fee = 0
 OFFPEG_FEE_MULTIPLIER = 20000000000
@@ -132,3 +139,133 @@ print(f"alice deposit {deposit_amt/10**6} coin1, got LP token", lp_mint_amt)
 print(f"  LP nominal loss {(deposit_amt/10**6-lp_mint_amt/10**18)*1.0/(deposit_amt/10**6)*100:.2f}%")
 print("  LP token virtual price", virtual_price(pool))
 print("  pool balances", print_balances(pool))
+
+vps = [] # virtual price history
+coins = [coin0, coin1, coin2, coin3]
+users = []
+ratios = []
+
+def monte_carlo_sim(num_txs, loss_limit=0.1):
+    num_add_liq = 0
+    num_remove_liq = 0
+    num_swap = 0
+    import random
+
+    for i in range(100):
+        users.append( boa.env.generate_address())
+    for user in users:
+        for coin in coins:
+            coin._mint_for_testing(user, 1000000000*10**6)
+            coin.approve(pool.address, 1000000000*10**6, sender=user)
+    for tx in range(num_txs):
+        if tx % 100 == 0:
+            bals = print_balances(pool)
+            print(f"tx progress {tx}/{num_txs}")
+            print(f"  pool balance:", bals)
+            print(f"  max_bal/min_bal: {max(bals)*1.0/min(bals):e}", )
+            print(f"  virtual price", virtual_price(pool))
+        user = random.choice(users)
+        # pick one of the 3 actions (add liq, swap, withdraw liq)
+        op = random.randint(0, 2)
+        if op == 0: # add one liq
+            # pick a coin
+            coin_idx = random.randint(0, len(coins)-1)
+            coin = coins[coin_idx]
+            amt = random.randint(1, 1000)
+            deposit_amt = amt * 10**6
+            amounts =  [0] * len(coins)
+            amounts[coin_idx] = deposit_amt
+            try:
+                lp_mint_amt = pool.add_liquidity(
+                    amounts,
+                    int(amt*10**18*(1-loss_limit)),
+                    sender = user,
+                )
+            except Exception as e:
+                print("add_liquidity loss exceeded")
+
+            num_add_liq += 1
+        elif op == 1: # withdraw one liq
+            coin_idx = random.randint(0, len(coins)-1)
+            coin = coins[coin_idx]
+            lp_amt = pool.balanceOf(user)
+            if lp_amt == 0:
+                continue
+            # max_amt = max(pool.balanceOf(user) / 10**18, pool.balances(coin_idx)/10**6)
+            withdraw_amt = random.randint(1, min(pool.balanceOf(user), 1000*10**18))
+
+            out_coin_amt = pool.remove_liquidity_one_coin(
+                withdraw_amt,
+                coin_idx,
+                0,
+                sender = user,
+            )
+            # print("user withdraw liq")
+            num_remove_liq += 1
+        elif op == 2: # swap
+            x, y = random.sample(range(len(coins)), 2)
+            in_amt = random.randint(1, 10000) * 10**6
+            try:
+                out_amt = pool.exchange(
+                    x, y,
+                    in_amt, int(in_amt*(1-loss_limit)),
+                    sender=user,
+                )
+            except Exception as e:
+                print(f"swap loss exceeded {loss_limit}")
+            num_swap += 1
+        else:
+            assert False
+
+        bals = pool.get_balances()
+        max_min_ratio = max(bals) / min(bals)
+        ratios.append(max_min_ratio)
+        vp = virtual_price(pool)
+        vps.append(vp)
+        if vp < 1:
+            assert False
+
+num_txs = 10000
+loss_limit = 0.2
+monte_carlo_sim(num_txs, loss_limit)
+
+print(f"after {num_txs} txs")
+print("  final pool balance", print_balances(pool))
+print("  finla pool virtual price", virtual_price(pool))
+
+# now balance the pool by making all consititutes equal
+user = users[0]
+balances = pool.get_balances()
+max_bal = max(balances)
+amounts = [max_bal - bal for bal in balances]
+print(amounts)
+lp_mint_amt = pool.add_liquidity(
+    amounts,
+    0,
+    sender = user,
+)
+print("after balancing pool: ")
+print("   pool balance", print_balances(pool))
+print("   pool virtual price", virtual_price(pool))
+
+import matplotlib.pyplot as plt
+times = list(range(len(vps)))
+
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10,8), sharex=True)
+ax1.plot(times, vps, 'b-')
+ax1.set_ylabel('virtual prices')
+ax1.grid(True)
+
+ax2.plot(times, ratios, 'r-')
+ax2.set_xlabel('Time')
+ax2.set_ylabel('max/min balance ration')
+ax2.set_yscale('log')
+ax2.set_yticks([1, 10, 100, 1000])
+ax2.set_yticklabels(['1', '10', '100', '1000'])
+ax2.grid(True)
+plt.figtext(0.5, 0.01, f"A={A}, fee={fee}, num_txs={num_txs}, loss_limit={loss_limit}", ha="center", fontsize=12)
+
+
+plt.tight_layout()
+# plt.show()
+plt.savefig('vps_ratio_plot.png', dpi=300, bbox_inches='tight')
