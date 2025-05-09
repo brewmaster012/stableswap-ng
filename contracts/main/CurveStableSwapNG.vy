@@ -168,8 +168,8 @@ stored_balances: DynArray[uint256, MAX_COINS]
 FEE_DENOMINATOR: constant(uint256) = 10 ** 10
 fee: public(uint256)  # fee * 1e10
 offpeg_fee_multiplier: public(uint256)  # * 1e10
-admin_fee: public(constant(uint256)) = 5000000000
-MAX_FEE: constant(uint256) = 5 * 10 ** 9
+admin_fee: public(constant(uint256)) = 10000000000
+MAX_FEE: constant(uint256) = 10 * 10 ** 9
 
 # ---------------------- Pool Amplification Parameters -----------------------
 
