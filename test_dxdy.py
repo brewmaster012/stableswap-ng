@@ -87,9 +87,9 @@ print(f"  causing severe pool imbalance")
 balances1 = pool.get_balances()
 print("  after xchg pool balance", print_balances(pool))
 print("  LP token virtual price", virtual_price(pool))
-
-coin1._mint_for_testing(alice, 1000*10**6)
-coin1.approve(pool.address, 1000*10**6, sender=alice)
+for coin in [coin0, coin1, coin2, coin3]:
+    coin._mint_for_testing(alice, 1000*10**6)
+    coin.approve(pool.address, 1000*10**6, sender=alice)
 
 deposit_amt = 20*10**6
 lp_mint_amt = pool.add_liquidity(
@@ -97,12 +97,21 @@ lp_mint_amt = pool.add_liquidity(
     0,
     sender = alice,
 )
-print(f"alice deposit {deposit_amt/10**6} coin1, got LP token", lp_mint_amt)
-print("  LP nominal loss",(deposit_amt/10**6-lp_mint_amt/10**18)*1.0/(deposit_amt/10**6))
-print("  LP token virtual price", virtual_price(pool))
+print(f"alice deposit (abundant) {deposit_amt/10**6} coin1, got LP token", lp_mint_amt)
+print(f"  LP nominal loss {(deposit_amt/10**6-lp_mint_amt/10**18)*1.0/(deposit_amt/10**6)*100:.2f}%")
+print(f"  LP token virtual price", virtual_price(pool))
+
+deposit_amt = 20*10**6
+lp_mint_amt = pool.add_liquidity(
+    [0, 0, deposit_amt, 0],
+    0,
+    sender = alice,
+)
+print(f"alice deposit (scarce) {deposit_amt/10**6} coin2, got LP token", lp_mint_amt)
+print(f"  LP nominal gain {-(deposit_amt/10**6-lp_mint_amt/10**18)*1.0/(deposit_amt/10**6)*100:.2f}%")
+print(f"  LP token virtual price", virtual_price(pool))
 
 # restoring pegging if we rebalance the pool?
-coin2.approve(pool.address, dy, sender=alice)
 dx = pool.exchange(
     2, 0,
     dy, 0,
@@ -120,6 +129,6 @@ lp_mint_amt = pool.add_liquidity(
     sender = alice,
 )
 print(f"alice deposit {deposit_amt/10**6} coin1, got LP token", lp_mint_amt)
-print("  LP nominal loss",(deposit_amt/10**6-lp_mint_amt/10**18)*1.0/(deposit_amt/10**6))
+print(f"  LP nominal loss {(deposit_amt/10**6-lp_mint_amt/10**18)*1.0/(deposit_amt/10**6)*100:.2f}%")
 print("  LP token virtual price", virtual_price(pool))
 print("  pool balances", print_balances(pool))
