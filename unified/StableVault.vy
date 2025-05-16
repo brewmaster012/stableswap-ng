@@ -137,11 +137,25 @@ def migrate_pool_add_asset(
     # TODO: make sure the new_pool_addr contains all the assets in current pools
     # plus one more
     assert ERC20(_new_asset).transferFrom(msg.sender, self, _new_amount)
-
-    return StableSwapNG(self.poolAddress).remove_liquidity(
+    ERC20(_new_asset).approve(_new_pool_addr, _new_amount)
+    old_lp_token: uint256 = StableSwapNG(self.poolAddress).balanceOf(self)
+    amounts: DynArray[uint256, MAX_COINS] = StableSwapNG(self.poolAddress).remove_liquidity(
         _migrate_lp_amount,
         _min_amounts,
     )
+    for i in range(self.N_COINS_128, bound=MAX_COINS_128):
+        if amounts[i] > 0:
+            coin_address: address = self._coins(i)
+            ERC20(coin_address).approve(_new_pool_addr, amounts[i])
+
+    amounts.append(_new_amount)
+    new_lp_token: uint256 = StableSwapNG(_new_pool_addr).add_liquidity(
+        amounts, 0
+    )
+
+    assert new_lp_token >= old_lp_token
+    self._mint(msg.sender, new_lp_token - old_lp_token)
+    return amounts
 
 
 @external
