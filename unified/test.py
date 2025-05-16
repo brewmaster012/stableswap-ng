@@ -77,19 +77,21 @@ print(f"  supply:  {vault.totalSupply()}")
 print(f"  N_COINS: {vault.N_COINS()}")
 print(f"  coin0:   {vault.coins(0)}")
 
+coins = [coin0, coin1, coin2, coin3]
 print("Vault: alice deposit ERC20")
-coin0._mint_for_testing(alice, INITIAL_AMOUNT*10**6)
-coin0.approve(vault.address, 1000*10**6, sender=alice)
-vault.deposit([10*10**6, 0, 0, 0], 0, sender=alice)
+for c in coins:
+    c._mint_for_testing(alice, INITIAL_AMOUNT*10**6)
+    c.approve(vault.address, 1000*10**6, sender=alice)
+vault.deposit([10*10**6]*4, 0, sender=alice)
 uUSDC_bal = vault.balanceOf(alice)
 print(f"  vault LP token bal: {pool.balanceOf(vault.address)}")
 print(f"  minted uUSDC        {uUSDC_bal}")
 print(f"  vault supply        {vault.totalSupply()}")
 
 
-print("Vault: alice withdraw coin1")
+print("Vault: alice withdraw 1 coin1")
 coin1_recv = vault.withdraw_one_coin(
-    uUSDC_bal,
+    1*10**18,
     1,
     0,
     sender=alice
@@ -97,3 +99,32 @@ coin1_recv = vault.withdraw_one_coin(
 print(f"  return val:      {coin1_recv}")
 print(f"  vault supply:    {vault.totalSupply()}")
 print(f"  coin1 alice bal: {coin1.balanceOf(alice)}")
+
+
+print("Add a coin4 and deploy new pool")
+coin4 = boa.load("../contracts/mocks/ERC20.vy", "coin4", "coin4", 6)
+coin4._mint_for_testing(wallet, INITIAL_AMOUNT*10**6)
+coins = [coin0, coin1, coin2, coin3, coin4]
+pool_addr_new = factory.deploy_plain_pool(
+    "USDC.5",
+    "USDC.5",
+    [c.address for c in coins],
+    A,
+    fee,
+    OFFPEG_FEE_MULTIPLIER,
+    866,
+    0,
+    [0]*len(coins),
+    [bytes(b"")] * len(coins),
+    [zero_address] * len(coins),
+)
+pool_new = boa.load_partial("../contracts/main/CurveStableSwapNG.vy").at(pool_addr_new)
+# print("same code?", vault.same_code(pool.address, pool_new.address))
+
+print("before liq migration")
+coin4.approve(vault.address, 1000*10**6)
+lp_token = vault.totalSupply()
+print(f"migrating {lp_token} from old pool to new pool; ")
+recv = vault.migrate_pool_add_asset(lp_token, pool_new.address, coin4.address, 10*10**6, [0]*4)
+print(f"  recv: {recv}")
+print(f"  recv sum: {sum(recv)}")

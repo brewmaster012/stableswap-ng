@@ -31,6 +31,7 @@ interface StableSwapNG:
     ) -> uint256: view
     def coins(i: uint256) -> address: view
     def fee() -> uint256: view
+    def balanceOf(a: address) -> uint256: view
 
 from vyper.interfaces import ERC20
 implements: ERC20
@@ -121,8 +122,41 @@ def withdraw_one_coin(
     return coin_i
 
 # ------ Migrate to new pool -------------
+@external
+def migrate_pool_add_asset(
+    _migrate_lp_amount: uint256,
+    _new_pool_addr: address,
+    _new_asset: address,
+    _new_amount: uint256,
+    _min_amounts: DynArray[uint256, MAX_COINS]
+) -> DynArray[uint256, MAX_COINS]:
+    """
+    Liquidate the LP tokens the vault has in the old pool, receive
+    the underlying assets, put them into the new pool,
+    """
+    # TODO: make sure the new_pool_addr contains all the assets in current pools
+    # plus one more
+    assert ERC20(_new_asset).transferFrom(msg.sender, self, _new_amount)
+
+    return StableSwapNG(self.poolAddress).remove_liquidity(
+        _migrate_lp_amount,
+        _min_amounts,
+    )
 
 
+@external
+def migrate_pool_remove_asset():
+    assert 1 == 0, "not implemeted"
+    return
+
+@external
+@view
+def same_code(a: address, b: address) -> bool:
+    """
+    Compare the runtime bytecode hashes of two contracts.
+    Returns True if they match.
+    """
+    return a.codehash == b.codehash
 
 # ------ ERC20 impl ----------
 @internal
