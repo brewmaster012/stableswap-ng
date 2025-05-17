@@ -140,6 +140,10 @@ def migrate_pool_add_asset(
     The _new_amount cannot be too small as to cause the new pool to become
     too imabalanced. The msg.sender will receive at least _min_new_lp amount
     of vault balance (backed by the new pool LP token).
+    **Invariant**: After the migration of liquidity, the Vault balance should
+    be fully backed by the same amount of the new pool LP balance. This makes
+    sure that the Vault balance is always fully backed by LP token and pegged
+    to (a basket) of underlying stables.
     """
     # TODO: make sure the new_pool_addr contains all the assets in current pools
     # plus one more
@@ -167,6 +171,11 @@ def migrate_pool_add_asset(
 
     new_lp_mint:uint256  = new_lp_token - old_lp_token
     self._mint(msg.sender, new_lp_mint)
+
+    # update the current pool
+    self.N_COINS += 1
+    self.N_COINS_128 += 1
+    self.poolAddress = _new_pool_addr
     return (amounts, new_lp_mint)
 
 
@@ -174,6 +183,11 @@ def migrate_pool_add_asset(
 def migrate_pool_remove_asset():
     assert 1 == 0, "not implemeted"
     return
+
+@view
+@external
+def backed_by_lp() -> bool:
+    return self.total_supply <= StableSwapNG(self.poolAddress).balanceOf(self)
 
 
 # ------ ERC20 impl ----------

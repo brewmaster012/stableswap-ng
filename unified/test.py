@@ -122,6 +122,7 @@ pool_new = boa.load_partial("../contracts/main/CurveStableSwapNG.vy").at(pool_ad
 # print("same code?", vault.same_code(pool.address, pool_new.address))
 
 print("before liq migration")
+print("  vault backed?", vault.backed_by_lp())
 coin4.approve(vault.address, 1000*10**6)
 lp_token = vault.totalSupply()
 print(f"migrating {lp_token} from old pool to new pool; ")
@@ -132,3 +133,4 @@ print(f"  recv sum:       {sum(recv)}")
 print(f"  new pool bal:   {pool_new.balanceOf(vault.address)}")
 print(f"  vault balance:  {vault.totalSupply()}")
 print(f"  newly minted LP token    {new_lp}")
+print(f"  vault backed?   {vault.backed_by_lp()}")
