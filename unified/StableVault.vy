@@ -122,6 +122,7 @@ def withdraw_one_coin(
     return coin_i
 
 # ------ Migrate to new pool -------------
+# TODO: make this routine priviledged?
 @external
 def migrate_pool_add_asset(
     _new_pool_addr: address,
@@ -130,8 +131,15 @@ def migrate_pool_add_asset(
     _min_new_lp: uint256,
 ) -> (DynArray[uint256, MAX_COINS], uint256):
     """
-    Liquidate the LP tokens the vault has in the old pool, receive
-    the underlying assets, put them into the new pool,
+    The _new_pool_addr must be a Curve StableSwap-NG plain pool, with all
+    the assets in the current pool `self.poolAddress` plus the _new_asset.
+    This function migrates all the liquidity held by this Vault to the new
+    pool.  The liquidity migration consists of first withdrawing all add_liquidity
+    from the current pool, and deposit the underlying assets, plus the _new_amount
+    new_asset into the new pool.
+    The _new_amount cannot be too small as to cause the new pool to become
+    too imabalanced. The msg.sender will receive at least _min_new_lp amount
+    of vault balance (backed by the new pool LP token).
     """
     # TODO: make sure the new_pool_addr contains all the assets in current pools
     # plus one more
@@ -167,14 +175,6 @@ def migrate_pool_remove_asset():
     assert 1 == 0, "not implemeted"
     return
 
-@external
-@view
-def same_code(a: address, b: address) -> bool:
-    """
-    Compare the runtime bytecode hashes of two contracts.
-    Returns True if they match.
-    """
-    return a.codehash == b.codehash
 
 # ------ ERC20 impl ----------
 @internal
