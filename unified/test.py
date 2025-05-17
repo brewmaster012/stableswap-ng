@@ -82,7 +82,7 @@ print("Vault: alice deposit ERC20")
 for c in coins:
     c._mint_for_testing(alice, INITIAL_AMOUNT*10**6)
     c.approve(vault.address, 1000*10**6, sender=alice)
-vault.deposit([10*10**6]*4, 0, sender=alice)
+vault.deposit([100*10**6]*4, 0, sender=alice)
 uUSDC_bal = vault.balanceOf(alice)
 print(f"  vault LP token bal: {pool.balanceOf(vault.address)}")
 print(f"  minted uUSDC        {uUSDC_bal}")
@@ -91,7 +91,7 @@ print(f"  vault supply        {vault.totalSupply()}")
 
 print("Vault: alice withdraw 1 coin1")
 coin1_recv = vault.withdraw_one_coin(
-    1*10**18,
+    5*10**18,
     1,
     0,
     sender=alice
@@ -125,6 +125,10 @@ print("before liq migration")
 coin4.approve(vault.address, 1000*10**6)
 lp_token = vault.totalSupply()
 print(f"migrating {lp_token} from old pool to new pool; ")
-recv = vault.migrate_pool_add_asset(lp_token, pool_new.address, coin4.address, 10*10**6, [0]*4)
-print(f"  recv: {recv}")
-print(f"  recv sum: {sum(recv)}")
+print(f"  b4 pool balance: {pool.get_balances()}")
+recv, new_lp = vault.migrate_pool_add_asset( pool_new.address, coin4.address, 3*10**6, 2*10**6)
+print(f"  recv:           {recv}")
+print(f"  recv sum:       {sum(recv)}")
+print(f"  new pool bal:   {pool_new.balanceOf(vault.address)}")
+print(f"  vault balance:  {vault.totalSupply()}")
+print(f"  newly minted LP token    {new_lp}")

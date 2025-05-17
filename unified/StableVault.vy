@@ -124,12 +124,11 @@ def withdraw_one_coin(
 # ------ Migrate to new pool -------------
 @external
 def migrate_pool_add_asset(
-    _migrate_lp_amount: uint256,
     _new_pool_addr: address,
     _new_asset: address,
     _new_amount: uint256,
-    _min_amounts: DynArray[uint256, MAX_COINS]
-) -> DynArray[uint256, MAX_COINS]:
+    _min_new_lp: uint256,
+) -> (DynArray[uint256, MAX_COINS], uint256):
     """
     Liquidate the LP tokens the vault has in the old pool, receive
     the underlying assets, put them into the new pool,
@@ -139,9 +138,12 @@ def migrate_pool_add_asset(
     assert ERC20(_new_asset).transferFrom(msg.sender, self, _new_amount)
     ERC20(_new_asset).approve(_new_pool_addr, _new_amount)
     old_lp_token: uint256 = StableSwapNG(self.poolAddress).balanceOf(self)
+    min_amounts: DynArray[uint256, MAX_COINS] = []
+    for i in range(self.N_COINS_128, bound=MAX_COINS_128):
+        min_amounts.append(0)
     amounts: DynArray[uint256, MAX_COINS] = StableSwapNG(self.poolAddress).remove_liquidity(
-        _migrate_lp_amount,
-        _min_amounts,
+        old_lp_token,
+        min_amounts,
     )
     for i in range(self.N_COINS_128, bound=MAX_COINS_128):
         if amounts[i] > 0:
@@ -153,9 +155,11 @@ def migrate_pool_add_asset(
         amounts, 0
     )
 
-    assert new_lp_token >= old_lp_token
-    self._mint(msg.sender, new_lp_token - old_lp_token)
-    return amounts
+    assert new_lp_token >= old_lp_token + _min_new_lp
+
+    new_lp_mint:uint256  = new_lp_token - old_lp_token
+    self._mint(msg.sender, new_lp_mint)
+    return (amounts, new_lp_mint)
 
 
 @external
