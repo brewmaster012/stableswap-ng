@@ -87,6 +87,7 @@ uUSDC_bal = vault.balanceOf(alice)
 print(f"  vault LP token bal: {pool.balanceOf(vault.address)}")
 print(f"  minted uUSDC        {uUSDC_bal}")
 print(f"  vault supply        {vault.totalSupply()}")
+print("  vault backed?", vault.backed_by_lp())
 
 
 print("Vault: alice withdraw 1 coin1")
@@ -99,6 +100,7 @@ coin1_recv = vault.withdraw_one_coin(
 print(f"  return val:      {coin1_recv}")
 print(f"  vault supply:    {vault.totalSupply()}")
 print(f"  coin1 alice bal: {coin1.balanceOf(alice)}")
+print("  vault backed?", vault.backed_by_lp())
 
 
 print("Add a coin4 and deploy new pool")
