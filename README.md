@@ -25,6 +25,8 @@ A modified [Curve StableSwap pool](https://github.com/zeta-chain/FluidUSDC?tab=r
 underlying pool deployed;
 
 ## contracts
+In the `unfified` directory.
+
 [Vault](./unified/StableVault.vy)
 
 ## To run the test
