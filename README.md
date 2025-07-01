@@ -1,14 +1,14 @@
 # Stable Vault on top of Stableswap pool
 This repository contains a Proof-of-Concept implementation of a Stable Vault that issues
 ERC20 token backed by the LP token of underlying Curve StableSwap pool.
-The underlying StableSwap pool is a modified [Curve StableSwap pool](https://github.com/zeta-chain/FluidUSDC?tab=readme-ov-file); the minor modificationsa
-are:
+The underlying StableSwap pool is a modified [Curve StableSwap pool](https://github.com/zeta-chain/FluidUSDC?tab=readme-ov-file); See the README there
+to find movitation and more details.
+
+the minor modificationsa are:
 
 1. change fee ratio to 100% to admin and 0% to LP holder so that the virtual price of LP token
 should not accrue value due to tx fees.
 
-Also see the above repositiory for the particular use of Curve StableSwap pool and its LP token
-as a unified stable coin.
 
 The [Vault](./unified/StableVault.vy) contract is 1) ERC20 contract backed by underlying `CurveStableSwapNG`
 pool LP token; 2) pass through liquidity add/remove functions; 3) admin functions that change the
